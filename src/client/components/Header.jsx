@@ -1,0 +1,32 @@
+import React from 'react'
+import {Link} from 'react-router-dom'
+
+export default function Header() {
+  return (
+        <header id="header">
+            <div className="d-flex flex-column">
+
+                <div className="profile">
+                    <img src="assets/img/profile-img.jpg" alt="" className="img-fluid rounded-circle" />
+                    <h1 className="text-light"><a href="index.html">Alex Smith</a></h1>
+                    <div className="social-links mt-3 text-center">
+                        <Link to="" className="twitter"><i className="bx bxl-twitter"></i></Link>
+                        <Link to="" className="facebook"><i className="bx bxl-facebook"></i></Link>
+                        <Link to="" className="instagram"><i className="bx bxl-instagram"></i></Link>
+                        <Link to="" className="google-plus"><i className="bx bxl-skype"></i></Link>
+                        <Link to="" className="linkedin"><i className="bx bxl-linkedin"></i></Link>
+                    </div>
+                </div>
+
+                <nav id="navbar" className="nav-menu navbar">
+                    <ul>
+                        <li><Link to="/client" className="nav-link scrollto active"><i className="bx bx-home"></i> <span>Accueil</span></Link></li>
+                        <li><Link to="/client/moncompte" className="nav-link scrollto"><i className="bx bx-user"></i> <span>Mon Compte</span></Link></li>
+                        <li><Link to="/client/historiqueintervention" className="nav-link scrollto"><i className="bx bx-calendar-event"></i> <span>Historique Intervention</span></Link></li>
+                        <li><Link to="/client/factureintervention" className="nav-link scrollto"><i className="bx bx-user"></i> <span>Facture Intervention</span></Link></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+  )
+}
