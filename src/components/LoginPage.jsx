@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Link } from "react-router-dom";
 
-const LoginPage = () => (
+const LoginPage = () => {
+//  const [email, setEmail] = useState('')
+//  const [password, setPassword] = useState('')
+
+    const [credentials, setCredentials] = useState({
+      email: '',
+      password: ''
+    })
+
+    const onChange = (e) => {
+      setCredentials({
+        ...credentials,
+        [e.target.name]: e.target.value
+      })
+    }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    console.log(credentials)
+  }
+
+
+  return (
     <div>
          <div className="content">
     <div className="container">
@@ -16,15 +38,13 @@ const LoginPage = () => (
               <div className="mb-4">
                <center><h1>Se connecter</h1></center>
             </div>
-            <form action="#" method="post">
+            <form onSubmit={onSubmit}>
               <div className="form-group first">
-                <label htmlFor="email">Email</label>
-                <input type="text" className="form-control" id="email" name="email" required/>
+                <input type="email" className="form-control" placeholder="Email" id="email" name="email" value={credentials.email} onChange={onChange} required/>
 
               </div><br />
               <div className="form-group last mb-4">
-                <label htmlFor="password">Mot de passe</label>
-                <input type="password" className="form-control" id="password" name="password" required/>
+                <input type="password" className="form-control" placeholder="Password" id="password" name="password" value={credentials.password} onChange={onChange} required/>
                 
               </div>
               
@@ -48,6 +68,7 @@ const LoginPage = () => (
     </div>
   </div>
     </div>
-)
+  )
+}
  
 export default LoginPage;
