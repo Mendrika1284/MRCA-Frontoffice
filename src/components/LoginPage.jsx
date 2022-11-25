@@ -1,5 +1,6 @@
 import React from "react";
 import { Player } from '@lottiefiles/react-lottie-player';
+import { Link } from "react-router-dom";
 
 const LoginPage = () => (
     <div>
@@ -32,7 +33,7 @@ const LoginPage = () => (
                   <input type="checkbox" />
                   <div className="control__indicator"></div>
                 </label>
-                <span className="ml-auto"><a href="#" className="forgot-pass">Mot de passe Oublier</a></span> 
+                <span className="ml-auto"><Link to="#" className="forgot-pass">Mot de passe Oublier</Link></span> 
               </div>
 
               <input type="submit" value="Se connecter" className="btn btn-block btn-success" />
