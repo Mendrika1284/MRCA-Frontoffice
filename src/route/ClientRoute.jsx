@@ -1,5 +1,4 @@
 import {Routes, Route} from "react-router-dom";
-import LoginPage from "../components/LoginPage";
 import Client from "../client/Client";
 import NotFound from "../components/NotFound";
 import MonCompte from "../client/MonCompte";
@@ -7,15 +6,14 @@ import Dashboard from "../client/Dashboard";
 
 const ClientRoute = () => {
     return ( 
-        <Routes>
-        <Route index element={<LoginPage />} />
-        <Route index path="/login" element={<LoginPage />} />
-        <Route path="client" element={< Client/>}>
-          <Route path="moncompte" element={< MonCompte/>} />
+    <Routes>
+        <Route element={< Client/>}>
+          <Route index element={< Dashboard/>} />
           <Route path="dashboard" element={< Dashboard/>} />
+          <Route path="moncompte" element={< MonCompte/>} />
+          <Route path="*" element={< NotFound />} />
         </Route>
-        <Route path="*" element={< NotFound />} />
-      </Routes>
+    </Routes>
      );
 }
  

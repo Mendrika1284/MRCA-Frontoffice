@@ -4,7 +4,7 @@ import Header from './components/Header'
 
 export default function Client() {
   return (
-    <div>
+    <div className='Client'>
         <Header/>
         <main id="main">
             <Outlet/>

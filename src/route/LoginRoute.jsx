@@ -2,14 +2,14 @@ import {Routes, Route} from "react-router-dom";
 import LoginPage from "../components/LoginPage";
 import NotFound from "../components/NotFound";
 
-const ClientRoute = () => {
+const LoginRoute = () => {
     return ( 
-        <Routes>
+    <Routes>
         <Route index element={<LoginPage />} />
-        <Route index path="/login" element={<LoginPage />} />
+        <Route index path="login" element={<LoginPage />} />
         <Route path="*" element={< NotFound />} />
-      </Routes>
+    </Routes>
      );
 }
  
-export default ClientRoute;
+export default LoginRoute;
