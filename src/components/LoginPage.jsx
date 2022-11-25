@@ -1,48 +1,51 @@
 import React from "react";
+import { Player } from '@lottiefiles/react-lottie-player';
 
 const LoginPage = () => (
     <div>
-        <div className="limiter">
-            <div className="container-login100">
-                <div className="wrap-login100">
-                    <div className="login100-form-title">
-                        <span className="login100-form-title-1">
-                            Bienvenue
-                        </span>
-                    </div>
-
-                    <form className="login100-form validate-form">
-                        <div className="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-                            <span className="label-input100">Username</span>
-                            <input className="input100" type="text" name="username" placeholder="Enter username" />
-                                <span className="focus-input100"></span>
-                            </div>
-
-                        <div className="wrap-input100 validate-input m-b-18" data-validate="Password is required">
-                            <span className="label-input100">Password</span>
-                            <input className="input100" type="password" name="pass" placeholder="Enter password" />
-                                <span className="focus-input100"></span>
-                            </div>
-
-                        <div className="flex-sb-m w-full p-b-30">
-                            <div className="contact100-form-checkbox">
-                                <input className="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" />
-                                    <label className="label-checkbox100" for="ckb1">
-                                        Remember me
-                                    </label>
-                                </div>
-
-                        </div>
-
-                        <div className="container-login100-form-btn">
-                            <button className="login100-form-btn">
-                                Login
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+         <div className="content">
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6">
+            <Player  src='https://assets8.lottiefiles.com/private_files/lf30_m6j5igxb.json' className="player" loop autoplay />
         </div>
+        <div className="col-md-6 contents">
+          <div className="row justify-content-center">
+            <div className="col-md-8">
+              <div className="mb-4">
+               <center><h1>Se connecter</h1></center>
+            </div>
+            <form action="#" method="post">
+              <div className="form-group first">
+                <label for="username">Email</label>
+                <input type="text" className="form-control" id="username" required/>
+
+              </div><br />
+              <div className="form-group last mb-4">
+                <label for="password">Mot de passe</label>
+                <input type="password" className="form-control" id="password" required/>
+                
+              </div>
+              
+              <div className="d-flex mb-5 align-items-center">
+                <label className="control control--checkbox mb-0"><span className="caption">Se souvenir de moi</span>
+                  <input type="checkbox" />
+                  <div className="control__indicator"></div>
+                </label>
+                <span className="ml-auto"><a href="#" className="forgot-pass">Mot de passe Oublier</a></span> 
+              </div>
+
+              <input type="submit" value="Se connecter" className="btn btn-block btn-success" />
+
+            </form>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
     </div>
 )
  
