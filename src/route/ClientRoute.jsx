@@ -1,9 +1,9 @@
 import {Routes, Route} from "react-router-dom";
 import LoginPage from "../components/LoginPage";
-import Client from "./Client";
+import Client from "../client/Client";
 import NotFound from "../components/NotFound";
-import MonCompte from "./MonCompte";
-import Dashboard from "./Dashboard";
+import MonCompte from "../client/MonCompte";
+import Dashboard from "../client/Dashboard";
 
 const ClientRoute = () => {
     return ( 

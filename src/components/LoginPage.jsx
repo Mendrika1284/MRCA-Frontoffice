@@ -18,13 +18,13 @@ const LoginPage = () => (
             </div>
             <form action="#" method="post">
               <div className="form-group first">
-                <label for="username">Email</label>
-                <input type="text" className="form-control" id="username" required/>
+                <label htmlFor="email">Email</label>
+                <input type="text" className="form-control" id="email" name="email" required/>
 
               </div><br />
               <div className="form-group last mb-4">
-                <label for="password">Mot de passe</label>
-                <input type="password" className="form-control" id="password" required/>
+                <label htmlFor="password">Mot de passe</label>
+                <input type="password" className="form-control" id="password" name="password" required/>
                 
               </div>
               

@@ -1,5 +1,5 @@
 import React from "react";
-import ClientRoute from "./client/ClientRoute";
+import ClientRoute from "./route/ClientRoute";
 
 function App() {
 
