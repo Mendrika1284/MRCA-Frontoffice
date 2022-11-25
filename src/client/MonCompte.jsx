@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function MonCompte() {
   return (
-    <div>Test</div>
+    <div data-aos="fade-up">Test</div>
   )
 }

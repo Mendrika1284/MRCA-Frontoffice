@@ -7,7 +7,7 @@ const LoginPage = () => (
                 <div className="wrap-login100">
                     <div className="login100-form-title">
                         <span className="login100-form-title-1">
-                            Sign In
+                            Bienvenue
                         </span>
                     </div>
 
