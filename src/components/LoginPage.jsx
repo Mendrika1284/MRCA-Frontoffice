@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Player } from '@lottiefiles/react-lottie-player';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { loginService } from "../_services/login.service";
 
 const LoginPage = () => {
-//  const [email, setEmail] = useState('')
-//  const [password, setPassword] = useState('')
+
+  let navigate = useNavigate();
 
     const [credentials, setCredentials] = useState({
-      email: '',
-      password: ''
+      email: 'shayne27@robel.com',
+      password: 'password'
     })
 
     const onChange = (e) => {
@@ -21,6 +23,13 @@ const LoginPage = () => {
   const onSubmit = (e) => {
     e.preventDefault()
     console.log(credentials)
+    axios.post('http://localhost:8000/api/login_check', credentials)
+    .then(res => {
+      console.log(res)
+      loginService.saveToken(res.data.token)
+      navigate('/client')
+    })
+    .catch(error => console.log(error))
   }
 
 
