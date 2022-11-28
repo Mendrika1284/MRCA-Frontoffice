@@ -27,6 +27,8 @@ export default function Header() {
                         <li><Link to="/client/moncompte" className="nav-link scrollto"><i className="bx bx-user"></i> <span>Mon Compte</span></Link></li>
                         <li><Link to="/client/historiqueintervention" className="nav-link scrollto"><i className="bx bx-calendar-event"></i> <span>Historique Intervention</span></Link></li>
                         <li><Link to="/client/factureintervention" className="nav-link scrollto"><i className="bx bx-bookmark-minus"></i> <span>Facture Intervention</span></Link></li>
+                        <li><Link to="/client/demandedevis" className="nav-link scrollto"><i className="bx bx-tag"></i> <span>Demander un devis</span></Link></li>
+                        <li><Link to="/client/listedevis" className="nav-link scrollto"><i className="bx bx-sort-up"></i> <span>Liste de mes devis</span></Link></li>
                         <li><a href="#" onClick={logout} className="nav-link scrollto"><i className="bx bx-lock-open-alt"></i> <span>Se déconnecter</span></a></li>
                     </ul>
                 </nav>
