@@ -9,8 +9,8 @@ const LoginPage = () => {
   let navigate = useNavigate();
 
     const [credentials, setCredentials] = useState({
-      email: 'shayne27@robel.com',
-      password: 'password'
+      email: '',
+      password: ''
     })
 
     const onChange = (e) => {
