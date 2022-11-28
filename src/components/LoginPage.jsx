@@ -62,7 +62,7 @@ const LoginPage = () => {
                   <input type="checkbox" />
                   <div className="control__indicator"></div>
                 </label>
-                <span className="ml-auto"><Link to="#" className="forgot-pass">Mot de passe Oublier</Link></span> 
+                <span className="ml-auto"><Link to="/creerCompte" className="forgot-pass">Créer un compte</Link></span>
               </div>
 
               <input type="submit" value="Se connecter" className="btn btn-block btn-success" />
