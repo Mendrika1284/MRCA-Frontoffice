@@ -65,7 +65,10 @@ const LoginPage = () => {
                 <span className="ml-auto"><Link to="/creerCompte" className="forgot-pass">Créer un compte</Link></span>
               </div>
 
-              <input type="submit" value="Se connecter" className="btn btn-block btn-success" />
+              <div className="btn-group">
+                <input type="submit" value="Se connecter" className="btn btn-block btn-success mr-4" />
+                <Link to="/demande_devis"><button className="btn btn-primary">Demander devis</button></Link>
+              </div>
 
             </form>
             </div>
