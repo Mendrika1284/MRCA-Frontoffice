@@ -148,9 +148,6 @@ const Devis = () => {
             <div class="card-body">
               <StepSeven nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
             </div>
-            <div class="card-footer text-muted">
-              2 days ago
-            </div>
           </div>
         </div>
       );
@@ -178,7 +175,7 @@ const Devis = () => {
               Liste des sociétés pour envoyer la demande 
             </div>
             <div class="card-body">
-              <StepTwo nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
+              <StepNine nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
             </div>
           </div>
         </div>
