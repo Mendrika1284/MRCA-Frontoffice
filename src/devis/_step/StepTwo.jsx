@@ -18,6 +18,7 @@ const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
 
   //Mbola tsy mety ito
   const LocationFinderDummy = (a) => {
+    // eslint-disable-next-line no-unused-vars
     const map = useMapEvents({
         click(e) {
           updatedValue = {latitude: e.latlng.lat, longitude: e.latlng.lng}
@@ -40,9 +41,6 @@ var myIcon = L.icon({
 	shadowSize: [68, 95],
 	shadowAnchor: [22, 94]
 });
-
-   //creating error state for validation
-   const [error, setError] = useState(false);
 
    // after form submit validating the form data using validator
  const submitFormData = (e) => {
