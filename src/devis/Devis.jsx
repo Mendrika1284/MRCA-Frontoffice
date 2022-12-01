@@ -17,8 +17,8 @@ const Devis = () => {
 
   //state for form data
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    latitude: "",
+    longitude: "",
     age: "",
     email: ""
   })
@@ -36,7 +36,7 @@ const Devis = () => {
   // handling form input data by taking onchange value and updating our previous form data state
   const handleInputData = input => e => {
     // input value from the form
-    const {value } = e.target;
+    const {value} = e.target;
 
     //updating for data state taking previous state and then adding new value to create new object
     setFormData(prevState => ({
@@ -52,11 +52,11 @@ const Devis = () => {
     case 1:
       return (
         <div className="Devis" id="main">
-          <div class="card text-center">
-            <div class="card-header">
+          <div className="card text-center" data-aos="fade-left">
+            <div className="card-header">
               Choisir type de travaux
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <StepOne nextStep={nextStep} handleFormData={handleInputData} values={formData} />
             </div>
           </div>
@@ -66,11 +66,11 @@ const Devis = () => {
     case 2:
       return (
         <div className="Devis" id="main">
-          <div class="card text-center">
-            <div class="card-header">
+          <div className="card text-center">
+            <div className="card-header">
               Localisation
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <StepTwo nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
             </div>
           </div>
@@ -81,11 +81,11 @@ const Devis = () => {
     case 3:
       return (
         <div className="Devis" id="main">
-          <div class="card text-center">
-            <div class="card-header">
+          <div className="card text-center">
+            <div className="card-header">
               Nature travaux
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <StepThree nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
             </div>
           </div>
@@ -96,11 +96,11 @@ const Devis = () => {
     case 4:
       return (
         <div className="Devis" id="main">
-          <div class="card text-center">
-            <div class="card-header">
+          <div className="card text-center">
+            <div className="card-header">
               Type Matériaux
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <StepFour nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
             </div>
           </div>
@@ -111,11 +111,11 @@ const Devis = () => {
     case 5:
       return (
         <div className="Devis" id="main">
-          <div class="card text-center">
-            <div class="card-header">
+          <div className="card text-center">
+            <div className="card-header">
               Durée des travaux
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <StepFive nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
             </div>
           </div>
@@ -126,11 +126,11 @@ const Devis = () => {
     case 6:
       return (
         <div className="Devis" id="main">
-          <div class="card text-center">
-            <div class="card-header">
+          <div className="card text-center">
+            <div className="card-header">
               Documents à fournir
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <StepSix nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
             </div>
           </div>
@@ -141,11 +141,11 @@ const Devis = () => {
     case 7:
       return (
         <div className="Devis" id="main">
-          <div class="card text-center">
-            <div class="card-header">
+          <div className="card text-center">
+            <div className="card-header">
               Information supplémentaire
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <StepSeven nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
             </div>
           </div>
@@ -156,11 +156,11 @@ const Devis = () => {
     case 8:
       return (
         <div className="Devis" id="main">
-          <div class="card text-center">
-            <div class="card-header">
+          <div className="card text-center">
+            <div className="card-header">
               Connexion/inscription
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <StepEight nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
             </div>
           </div>
@@ -170,11 +170,11 @@ const Devis = () => {
     case 9:
       return (
         <div className="Devis" id="main">
-          <div class="card text-center">
-            <div class="card-header">
+          <div className="card text-center">
+            <div className="card-header">
               Liste des sociétés pour envoyer la demande 
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <StepNine nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
             </div>
           </div>
@@ -185,8 +185,8 @@ const Devis = () => {
     case 10:
       return (
         <div className="Devis" id="main">
-          <div class="card text-center">
-            <div class="card-body">
+          <div className="card text-center">
+            <div className="card-body">
               <StepFinal />
             </div>
           </div>

@@ -11,10 +11,10 @@ const StepOne = ({ nextStep, handleFormData, values }) => {
   };
 
     return ( 
-        <div>
+        <div data-aos="zoom-in-up">
             <form onSubmit={submitFormData} className="form-group" >
-                <select onChange={handleFormData("typeTravaux")} class="form-select mb-4" aria-label="Default select example">
-                    <option selected>Choisir type de travaux</option>
+                <select onChange={handleFormData("typeTravaux")} className="form-select mb-4" aria-label="Default select example">
+                    <option defaultValue>Choisir type de travaux</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>

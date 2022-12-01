@@ -12,11 +12,11 @@ nextStep();
 };
 
  return ( 
-     <div>
+     <div data-aos="fade-left">
          <form onSubmit={submitFormData}>
-             <div class="mb-3">
-                 <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+             <div className="mb-3">
+                 <label for="exampleFormControlInput1" className="form-label">Email address</label>
+                 <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
              </div>
              <div style={{ display: "flex", justifyContent: "space-around" }}>
            <button className="btn btn-warning" onClick={prevStep}>Précédent</button>
