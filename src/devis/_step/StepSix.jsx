@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { React, useState } from "react";
 
-const StepSix = ({ nextStep, handleFormData, prevStep, values }) => {
+const StepSix = ({ nextStep, handleChange, prevStep, values }) => {
 //creating error state for validation
 const [error, setError] = useState(false);
 
@@ -15,8 +16,7 @@ nextStep();
      <div data-aos="fade-left">
          <form onSubmit={submitFormData}>
              <div className="mb-3">
-                 <label for="exampleFormControlInput1" className="form-label">Email address</label>
-                 <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                 <input type="file" name="document" defaultValue={values.document} onChange={handleChange("document")} className="form-control" id="exampleFormControlInput1"/>
              </div>
              <div style={{ display: "flex", justifyContent: "space-around" }}>
            <button className="btn btn-warning" onClick={prevStep}>Précédent</button>

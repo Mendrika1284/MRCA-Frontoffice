@@ -3,8 +3,9 @@ import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from 'react-leaf
 import 'leaflet/dist/leaflet.css';
 import '../_styles/StepTwo.css';
 import L from 'leaflet';
+import { Modal } from "react-bootstrap";
 
-const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
+const StepTwo = ({ nextStep, handleChange, prevStep, values }) => {
   const mapRef = useRef();
 
   const defaultCenter = [-18.855910, 47.484868];
@@ -16,7 +17,7 @@ const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
   })
   let updatedValue = {};
 
-  //Mbola tsy mety ito
+
   const LocationFinderDummy = (a) => {
     // eslint-disable-next-line no-unused-vars
     const map = useMapEvents({
@@ -25,14 +26,18 @@ const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
           setPosition(positions => ({
             ...positions,
             ...updatedValue
-          }))
+          }
+          ))
         },
     });
     return null;
 };
 
 const latLng = [positions.latitude, positions.longitude];
+values.latitude = positions.latitude;
+values.longitude = positions.longitude;
 
+//Icon
 var myIcon = L.icon({
 	iconUrl: 'assets/img/marker.png',
 	iconSize: [25, 45],
@@ -42,59 +47,53 @@ var myIcon = L.icon({
 	shadowAnchor: [22, 94]
 });
 
-   // after form submit validating the form data using validator
+//Popup
+const [show, setShow] = useState(false);
+
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
+
+
+// after form submit validating the form data using validator
  const submitFormData = (e) => {
    e.preventDefault();
-
-   values.latitude = positions.latitude;
-   values.longitude = positions.longitude;
 
    nextStep();
  };
 
-/* function LocationMarker() {
-  const [position, setPosition] = useState(null)
-  const map = useMapEvents({
-    click() {
-      map.locate()
-    },
-    locationfound(e) {
-      setPosition(e.latlng)
-      map.flyTo(e.latlng, map.getZoom())
-    },
-  })
 
-  return position === null ? null : (
-    <Marker position={position} icon={myIcon}>
-      <Popup>You are here</Popup>
-    </Marker>
-  )
-} */
 
 
  return(
-  <div>
+<div data-aos="fade-left">
+      <button onClick={handleShow} className="btn btn-primary" type="submit">Voir la carte</button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Body>
+          <MapContainer ref={mapRef} center={defaultCenter} zoom={defaultZoom}>
+          <LocationFinderDummy />
+          <Marker position={latLng} icon={myIcon}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; <a href=&quot;https://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a> contributors" />
+        </MapContainer>
+        </Modal.Body>
+      </Modal>
   <div className="">
-      <MapContainer ref={mapRef} center={defaultCenter} zoom={defaultZoom}>
-        <LocationFinderDummy />
-        <Marker position={latLng} icon={myIcon}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; <a href=&quot;https://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a> contributors" />
-      </MapContainer>
-  </div>
-  <div className="">
-  <form onSubmit={submitFormData}>
+    <form onSubmit={submitFormData}>
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">Latitude</label>
-        <input className="form-control" type="text" defaultValue={positions.latitude} placeholder={values.latitude} aria-label="readonly input example" onChange={handleFormData("latitude")} readOnly required />
+        <input className="form-control" type="text" defaultValue={values.latitude} onMouseMove={handleChange("latitude")} name="latitude" aria-label="readonly input example" readOnly required />
       </div>
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">Longitude</label>
-        <input className="form-control" type="text" defaultValue={positions.longitude} placeholder={values.longitude} aria-label="readonly input example" onChange={handleFormData("longitude")} readOnly required/>
+        <input className="form-control" type="text" defaultValue={values.longitude} onMouseMove={handleChange("longitude")} name="longitude" aria-label="readonly input example" readOnly required/>
       </div>
+      <div className="mb-3">
+                 <label htmlFor="exampleFormControlInput1" className="form-label">Adresse</label>
+                 <input type="text" className="form-control" defaultValue={values.adresse} onChange={handleChange("adresse")} id="exampleFormControlInput1" name="adresse" placeholder="" required/>
+             </div>
       <div style={{ display: "flex", justifyContent: "space-around" }}>
         <button className="btn btn-warning" type="submit" onClick={prevStep}>Précédent</button>
         <button className="btn btn-primary" type="submit">Suivant</button>

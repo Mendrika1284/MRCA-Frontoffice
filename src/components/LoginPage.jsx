@@ -27,6 +27,7 @@ const LoginPage = () => {
     .then(res => {
       console.log(res)
       loginService.saveToken(res.data.token)
+      loginService.saveEmail(e.target.email.value)
       navigate('/client')
     })
     .catch(error => console.log(error))

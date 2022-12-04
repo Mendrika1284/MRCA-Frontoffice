@@ -3,6 +3,10 @@ let saveToken = (token) => {
     localStorage.setItem('token', token)
 }
 
+let saveEmail = (email) => {
+    localStorage.setItem('email', email)
+}
+
 let logout = () => {
     localStorage.removeItem('token')
 }
@@ -13,5 +17,5 @@ let isLogged = () => {
 }
 
 export const loginService = {
-    saveToken, logout, isLogged
+    saveToken, saveEmail, logout, isLogged
 }
