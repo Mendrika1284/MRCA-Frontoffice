@@ -59,7 +59,7 @@ render() {
             <div className="Devis col-md-6">
               <div className="card text-center" style={{ marginTop: 300 }} data-aos="fade-left">
                 <div className="card-header">
-                  Choisir type de travaux
+                Quels travaux souhaitez-vous réaliser ?
                 </div>
                 <div className="card-body">
                     <StepOne  nextStep={this.nextStep}
