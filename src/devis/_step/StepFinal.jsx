@@ -47,7 +47,8 @@ export class StepFinal extends Component {
         "document": toStringDocument,
         "infoSupplementaire": toStringInfoSupplementaire,
         "email": toStringEmail,
-        "createdAt": dateToday
+        "createdAt": dateToday,
+        "etat": 0
       };
 
       axios.post(`http://localhost:8000/apiplatform/devis_clients`, devis)
