@@ -54,17 +54,42 @@ const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
 
 
+//Verification code postal
+// eslint-disable-next-line no-unused-vars
+const [codePostal, setCodePostal] = useState('');
+const [codePostalError, setCodePostalError] = useState(false);
+
+function estCodePostal(str) {
+  var code = [105,106,107,108,101,103,102,116];
+  if (code.includes(parseInt(str))) {
+    return true;
+  }else{
+    return false;
+  }
+}
+
+const handleChangeCodePostal = event => {
+  setCodePostal(event.target.value);
+
+  if (estCodePostal(event.target.value)) {
+    setCodePostalError(false);
+  } else {
+    setCodePostalError(true);
+  }
+};
+
+
 // after form submit validating the form data using validator
  const submitFormData = (e) => {
    e.preventDefault();
-
-   nextStep();
+  if(codePostalError === true){
+    setCodePostalError(true);
+  }else{
+    nextStep();
+  }
  };
 
-
-
-
- return(
+return(
 <div data-aos="fade-left">
       <button onClick={handleShow} className="btn btn-primary" type="submit">Voir la carte</button>
       <Modal show={show} onHide={handleClose}>
@@ -91,9 +116,14 @@ const handleShow = () => setShow(true);
         <input className="form-control" type="text" defaultValue={values.longitude} onMouseMove={handleChange("longitude")} name="longitude" aria-label="readonly input example" readOnly required/>
       </div>
       <div className="mb-3">
-                 <label htmlFor="exampleFormControlInput1" className="form-label">Adresse</label>
-                 <input type="text" className="form-control" defaultValue={values.adresse} onChange={handleChange("adresse")} id="exampleFormControlInput1" name="adresse" placeholder="" required/>
-             </div>
+          <label htmlFor="exampleFormControlInput1" className="form-label">Code postal</label>
+          <input type="text" className="form-control" defaultValue={values.adresse} onChange={handleChange("adresse")} onKeyUp={handleChangeCodePostal} id="exampleFormControlInput1" name="adresse" placeholder="" required/>
+          {
+            codePostalError ? (
+              <p className="text-danger">Veuillez entrer un code postal valide</p>
+              ):(<p data-aos="zoom-in-up"></p>)
+          }
+      </div>
       <div style={{ display: "flex", justifyContent: "space-around" }}>
         <button className="btn btn-warning" type="submit" onClick={prevStep}>Précédent</button>
         <button className="btn btn-primary" type="submit">Suivant</button>

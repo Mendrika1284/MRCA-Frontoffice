@@ -16,7 +16,8 @@ export class Devis extends Component {
     latitude: "",
     longitude: "",
     adresse: "",
-    duree:"",
+    dateDebut: "",
+    dateFin: "",
     document: "",
     infoSupp:"",
     email:""
@@ -46,8 +47,8 @@ handleChange = input => e => {
 
 render() {
   const { step } = this.state;
-  const {typeTravaux,latitude,longitude,adresse,duree,document,infoSupp,email } = this.state;
-  const values = {typeTravaux,latitude,longitude,adresse,duree,document,infoSupp,email }
+  const {typeTravaux,latitude,longitude,adresse,dateDebut,dateFin,document,infoSupp,email } = this.state;
+  const values = {typeTravaux,latitude,longitude,adresse,dateDebut,dateFin,document,infoSupp,email }
 
 
   switch (step) {
@@ -187,7 +188,7 @@ render() {
         <div className="container">
           <div className="row justify-content-center align-items-center">
             <div className="Devis col-md-6">
-              <div className="card text-center">
+              <div className="card text-center" style={{ marginTop: 300 }}>
                 <div className="card-body">
                   <StepFinal values={values} />
                 </div>
