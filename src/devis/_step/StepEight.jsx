@@ -12,6 +12,7 @@ const [error, setError] = useState(false);
 const [isLogged, setIsLogged] = useState(false); // Pour verifier si l'utilisateur est déjà connecter
 const [input, setInput] = useState(''); // Pour recevoir l'entrer reçu sur le champs de connexion
 const [isMailExist, setIsMyEmail] = useState(false); // Pour voir si le mail venant d'API Platform existe
+const [isMailInscriptionExist, setIsInscriptionEmail] = useState(false); // Pour voir si le mail venant d'API Platform existe
 const [isSignup, setIsSignup] = useState(false); // Apres click sur 's'inscrire ?'
 const [isSignedUp, setIsSignedUp] = useState(false); // Apres inscription
 
@@ -29,8 +30,21 @@ function handleChangeEmail(event) {
     }
   })
   .catch(error => console.error(`Erreur: ${error}`));
-
 }
+
+function handleChangeEmailInscription(event) {
+  setInput(event.target.value);
+  axios.get(utilisateurURL+String(event.target.value)).then((response) => {
+    console.log(response.data['hydra:member'].length)
+    if(response.data['hydra:member'].length===0){
+      setIsInscriptionEmail(false);
+    }else{
+      setIsInscriptionEmail(true);
+    }
+  })
+  .catch(error => console.error(`Erreur: ${error}`));
+}
+
 
 function toogleInscription() {
   if(error){
@@ -63,14 +77,18 @@ const onChangeInscription = (e) => {
 const onSubmitInscription = (e) => {
   e.preventDefault()
   console.log(inscription)
-  axios.post('http://localhost:8000/apiplatform/utilisateurs', inscription)
-  .then(res => {
-    console.log(res)
-    loginService.saveEmail(e.target.email.value)
-    setIsMyEmail(true);
-    setIsSignedUp(true);
-  })
-  .catch(error => console.log(error))
+  if(isMailInscriptionExist){
+    
+  }else{
+    axios.post('http://localhost:8000/apiplatform/utilisateurs', inscription)
+    .then(res => {
+      console.log(res)
+      loginService.saveEmail(e.target.email.value)
+      setIsMyEmail(true);
+      setIsSignedUp(true);
+    })
+    .catch(error => console.log(error))
+  }
 }
 
 
@@ -121,7 +139,8 @@ function CheckEmail(){
                       <form onSubmit={onSubmitInscription}>
                       <div className="mb-3">
                         <label htmlFor="exampleFormControlInput1" className="form-label">Email</label>
-                        <input type="email" className="form-control" name="email" onMouseLeave={onChangeInscription} defaultValue={inscription.email} placeholder="name@example.com" required/>
+                        <input type="email" className="form-control" name="email" onMouseLeave={onChangeInscription} onMouseOut={handleChangeEmailInscription} defaultValue={inscription.email} placeholder="name@example.com" required/>
+                        {isMailInscriptionExist ? (<p className="text-danger"><i className="bx bx-x-circle"></i> Ce compte existe déjà</p>) : ('')}
                       </div>
                       <div className="mb-3">
                         <label htmlFor="exampleFormControlInput2" className="form-label">Nom</label>
