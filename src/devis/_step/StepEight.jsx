@@ -11,7 +11,7 @@ const StepEight = ({ nextStep, handleChange, prevStep, values }) => {
 const [error, setError] = useState(false);
 const [isLogged, setIsLogged] = useState(false); // Pour verifier si l'utilisateur est déjà connecter
 const [input, setInput] = useState(''); // Pour recevoir l'entrer reçu sur le champs de connexion
-const [isMailExist, setIsMyEmail] = useState(false); // Pour voir si le mail venant d'API Platform existe
+const [isMailExist, setIsMyEmail] = useState(true); // Pour voir si le mail venant d'API Platform existe
 const [isMailInscriptionExist, setIsInscriptionEmail] = useState(false); // Pour voir si le mail venant d'API Platform existe
 const [isSignup, setIsSignup] = useState(false); // Apres click sur 's'inscrire ?'
 const [isSignedUp, setIsSignedUp] = useState(false); // Apres inscription

@@ -35,7 +35,6 @@ export class StepFinal extends Component {
       let toStringInfoSupplementaire = String(infoSupp);
       let toStringEmail = String(email);
 
-      console.log(toStringPositionX);
       const devis = { 
         "idTypeTravaux": toStringIdTypeTravaux,
         "positionX": toStringPositionX,
