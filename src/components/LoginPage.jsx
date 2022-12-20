@@ -6,12 +6,16 @@ import { loginService } from "../_services/login.service";
 
 const LoginPage = () => {
 
+  const [isLoading, setIsLoading] = useState(false);
   let navigate = useNavigate();
 
     const [credentials, setCredentials] = useState({
       email: '',
       password: ''
     })
+
+    const [loginError, setLoginError] = useState(false);
+    const [isAccountDesactivate, setAccountDesactivate] = useState(false);
 
     const onChange = (e) => {
       setCredentials({
@@ -23,12 +27,32 @@ const LoginPage = () => {
   const onSubmit = (e) => {
     e.preventDefault()
     console.log(credentials)
-    axios.post('http://localhost:8000/api/login_check', credentials)
+    setIsLoading(true);
+    axios.post('http://localhost:8000/connexion_utilisateur/'+credentials.email+'/'+credentials.password)
     .then(res => {
-      console.log(res)
-      loginService.saveToken(res.data.token)
-      loginService.saveEmail(e.target.email.value)
-      navigate('/client')
+      console.log(res.data.connexionClient[0].roles)
+      if(typeof res.data.connexionClient !== 'undefined'){
+        if(res.data.connexionClient[0].roles.includes("[ROLE_PROFESSIONNAL]") && res.data.connexionClient[0].status_compte === 1){
+          loginService.saveToken(res.data.token);
+          loginService.saveEmail(e.target.email.value);
+          loginService.saveId(res.data.connexionClient[0].id);
+          navigate('/artisan');
+        }else if(res.data.connexionClient[0].roles.includes("ROLE_CLIENT") && res.data.connexionClient[0].status_compte === 1){
+          loginService.saveToken(res.data.token);
+          loginService.saveEmail(e.target.email.value);
+          loginService.saveId(res.data.connexionClient[0].id);
+          navigate('/client');
+        }else{
+          setLoginError(false);
+          setAccountDesactivate(true);
+        }
+      }else{
+        setAccountDesactivate(false);
+        setLoginError(true);
+      }
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
     })
     .catch(error => console.log(error))
   }
@@ -65,11 +89,37 @@ const LoginPage = () => {
                 </label>
                 <span className="ml-auto"><Link to="/creerCompte" className="forgot-pass">Créer un compte</Link></span>
               </div>
-
-              <div className="btn-group">
-                <input type="submit" value="Se connecter" className="btn btn-block btn-success mr-4" />
-                <Link to="/demande_devis"><button className="btn btn-primary">Demander devis</button></Link>
-              </div>
+              {isLoading ? 
+              (
+                <div className="d-flex justify-content-center">
+                  <div className="spinner-grow text-primary" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                </div>
+              ) : 
+              (
+                <div>
+                  <div className="btn-group mb-4">
+                    <input type="submit" value="Se connecter" className="btn btn-block btn-success mr-4" />
+                    <Link to="/demande_devis"><button className="btn btn-primary">Demander devis</button></Link>
+                  </div>
+                  {
+                    isAccountDesactivate ? (
+                      <div className="alert alert-danger" data-aos="fade-up" role="alert">
+                        Ce compte est desactiver!
+                      </div>
+                    ) : ('')
+                  }
+                  {
+                    loginError ? (
+                      <div className="alert alert-danger" data-aos="fade-up" role="alert">
+                        Email ou mot de passe erroner
+                      </div>
+                    ) : ('')
+                  }
+                </div>
+              )
+              }
 
             </form>
             </div>
