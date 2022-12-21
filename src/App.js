@@ -4,6 +4,7 @@ import LoginRoute from "./route/LoginRoute";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import AuthGuard from "./_helpers/AuthGuard";
 import DevisRoute from "./route/DevisRoute";
+import ArtisanRoute from "./route/ArtisanRoute";
 
 function App() {
 
@@ -15,6 +16,11 @@ function App() {
         <Route path="/client/*" element={
           <AuthGuard>
             <ClientRoute/>
+          </AuthGuard>
+        }/>
+        <Route path="/artisan/*" element={
+          <AuthGuard>
+            <ArtisanRoute/>
           </AuthGuard>
         }/>
         <Route path="/demande_devis/*" element={<DevisRoute/>} />

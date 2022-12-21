@@ -26,12 +26,8 @@ export default function Header() {
 
                 <nav id="navbar" className="nav-menu navbar">
                     <ul>
-                        <li><Link to="/client/dashboard" className="nav-link scrollto active"><i className="bx bx-home"></i> <span>Accueil</span></Link></li>
-                        <li><Link to="/client/moncompte" className="nav-link scrollto"><i className="bx bx-user"></i> <span>Mon Compte</span></Link></li>
-                        <li><Link to="/client/historiqueintervention" className="nav-link scrollto"><i className="bx bx-calendar-event"></i> <span>Historique Intervention</span></Link></li>
-                        <li><Link to="/client/factureintervention" className="nav-link scrollto"><i className="bx bx-bookmark-minus"></i> <span>Facture Intervention</span></Link></li>
-                        <li><Link to="/demande_devis" className="nav-link scrollto"><i className="bx bx-tag"></i> <span>Demander un devis</span></Link></li>
-                        <li><Link to="/client/listedevis" className="nav-link scrollto"><i className="bx bx-sort-up"></i> <span>Liste de mes devis</span></Link></li>
+                        <li><Link to="/artisan/dashboard" className="nav-link scrollto active"><i className="bx bx-home"></i> <span>Accueil</span></Link></li>
+                        <li><Link to="/artisan/moncompte" className="nav-link scrollto"><i className="bx bx-user"></i> <span>Mon Compte</span></Link></li>
                         <li><a href="#" onClick={logout} className="nav-link scrollto"><i className="bx bx-lock-open-alt"></i> <span>Se déconnecter</span></a></li>
                     </ul>
                 </nav>

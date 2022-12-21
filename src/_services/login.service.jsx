@@ -7,6 +7,11 @@ let saveEmail = (email) => {
     localStorage.setItem('email', email)
 }
 
+let saveData = (data) => {
+    let toStringData = JSON.stringify(data);
+    localStorage.setItem('data',toStringData);
+}
+
 let saveId = (id) => {
     localStorage.setItem('id', id)
 }
@@ -23,5 +28,5 @@ let isLogged = () => {
 }
 
 export const loginService = {
-    saveToken, saveEmail, saveId, logout, isLogged
+    saveToken, saveEmail, saveId, logout, isLogged, saveData
 }

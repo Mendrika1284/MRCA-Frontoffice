@@ -32,15 +32,17 @@ const LoginPage = () => {
     .then(res => {
       console.log(res.data.connexionClient[0].roles)
       if(typeof res.data.connexionClient !== 'undefined'){
-        if(res.data.connexionClient[0].roles.includes("[ROLE_PROFESSIONNAL]") && res.data.connexionClient[0].status_compte === 1){
+        if(res.data.connexionClient[0].roles.includes("ROLE_PROFESSIONNAL") && res.data.connexionClient[0].status_compte === 1){
           loginService.saveToken(res.data.token);
           loginService.saveEmail(e.target.email.value);
           loginService.saveId(res.data.connexionClient[0].id);
+          loginService.saveData(res.data);
           navigate('/artisan');
         }else if(res.data.connexionClient[0].roles.includes("ROLE_CLIENT") && res.data.connexionClient[0].status_compte === 1){
           loginService.saveToken(res.data.token);
           loginService.saveEmail(e.target.email.value);
           loginService.saveId(res.data.connexionClient[0].id);
+          loginService.saveData(res.data);
           navigate('/client');
         }else{
           setLoginError(false);
