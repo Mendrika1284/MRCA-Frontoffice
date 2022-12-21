@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, { useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import { loginService } from '../../_services/login.service'
 
@@ -7,12 +7,17 @@ export default function Header() {
 
     let donneeUtilisateurStocker = localStorage.getItem('data');
     let toArrayDonneeUtilisateur = JSON.parse(donneeUtilisateurStocker);
+    const [isLoading, setIsLoading] = useState(false);
 
     let navigate = useNavigate()
 
     const logout = () => {
-        loginService.logout()
-        navigate('/')
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+            loginService.logout()
+            navigate('/')
+          }, 1000);
     }
 
   return (
@@ -29,7 +34,9 @@ export default function Header() {
                         <li><Link to="/artisan/dashboard" className="nav-link scrollto active"><i className="bx bx-home"></i> <span>Accueil</span></Link></li>
                         <li><Link to="/artisan/moncompte" className="nav-link scrollto"><i className="bx bx-user"></i> <span>Mon Compte</span></Link></li>
                         <li><Link to="/artisan/listedevis" className="nav-link scrollto"><i className="bx bx-sort-up"></i> <span>Liste de mes devis</span></Link></li>
-                        <li><a href="#" onClick={logout} className="nav-link scrollto"><i className="bx bx-lock-open-alt"></i> <span>Se déconnecter</span></a></li>
+                        <li><a href="#" onClick={logout} className="nav-link scrollto"> {
+                            isLoading ? (<span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>) : (<i className="bx bx-lock-open-alt"></i> )
+                        } <span>Se déconnecter</span></a></li>
                     </ul>
                 </nav>
             </div>

@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { loginService } from "../_services/login.service";
 
 const LoginPage = () => {
-
-  const [isLoading, setIsLoading] = useState(false);
   let navigate = useNavigate();
 
+  // Pour verifier si l'utilisateur est déjà connecter ou non
+  useEffect(() => {
+    if (localStorage.getItem('data')) {
+      let toArrayDonneeUtilisateur = JSON.parse(localStorage.getItem('data'));
+      if(toArrayDonneeUtilisateur.connexionClient[0].roles.includes('ROLE_PROFESSIONNAL')){
+        navigate('/artisan');
+      }else{
+        navigate('/client');
+      }
+    } else {
+        navigate('/login');
+    }
+  }, []);
+
+    const [isLoading, setIsLoading] = useState(false);
     const [credentials, setCredentials] = useState({
       email: '',
       password: ''
@@ -37,13 +50,19 @@ const LoginPage = () => {
           loginService.saveEmail(e.target.email.value);
           loginService.saveId(res.data.connexionClient[0].id);
           loginService.saveData(res.data);
-          navigate('/artisan');
+          setTimeout(() => {
+            setIsLoading(false);
+            navigate('/artisan');
+          }, 2000);
         }else if(res.data.connexionClient[0].roles.includes("ROLE_CLIENT") && res.data.connexionClient[0].status_compte === 1){
           loginService.saveToken(res.data.token);
           loginService.saveEmail(e.target.email.value);
           loginService.saveId(res.data.connexionClient[0].id);
           loginService.saveData(res.data);
-          navigate('/client');
+          setTimeout(() => {
+            setIsLoading(false);
+            navigate('/client');
+          }, 2000);
         }else{
           setLoginError(false);
           setAccountDesactivate(true);

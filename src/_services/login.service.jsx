@@ -20,6 +20,7 @@ let logout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('email')
     localStorage.removeItem('id')
+    localStorage.removeItem('data')
 }
 
 let isLogged = () => {
