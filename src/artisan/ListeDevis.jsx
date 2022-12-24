@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ListeDevis = () => {
     let idArtisan = localStorage.getItem('id');
@@ -29,17 +30,17 @@ const ListeDevis = () => {
                         return(
                             <tr key={item.idDevis}>
                                 <td>{item.idDevis}</td>
-                                <td>{item.nomTypeTravaux}</td>
+                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`} className="nav-link">{item.nomTypeTravaux}</Link></td>
                                 <td>{item.dateCreation}</td>
                                 <td>{item.emailClient}</td>
-                                <td>A préparer</td>
+                                <td><Link to={`/artisan/preparerDevis/${item.idDevis}`} className="nav-link"> A Préparer </Link></td>
                             </tr>
                         )
                     }else if(item.etatDevis === 2){
                         return(
                             <tr key={item.idDevis}>
                                 <td>{item.idDevis}</td>
-                                <td>{item.nomTypeTravaux}</td>
+                                <td><Link to={`/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
                                 <td>{item.dateCreation}</td>
                                 <td>{item.emailClient}</td>
                                 <td>En attente validation</td>
@@ -49,7 +50,7 @@ const ListeDevis = () => {
                         return(
                             <tr key={item.idDevis}>
                                 <td>{item.idDevis}</td>
-                                <td>{item.nomTypeTravaux}</td>
+                                <td><Link to={`/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
                                 <td>{item.dateCreation}</td>
                                 <td>{item.emailClient}</td>
                                 <td>Validé</td>
@@ -59,7 +60,7 @@ const ListeDevis = () => {
                         return(
                             <tr key={item.idDevis}>
                                 <td>{item.idDevis}</td>
-                                <td>{item.nomTypeTravaux}</td>
+                                <td><Link to={`/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
                                 <td>{item.dateCreation}</td>
                                 <td>{item.emailClient}</td>
                                 <td>Refusé</td>
