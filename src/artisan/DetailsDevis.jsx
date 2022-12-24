@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './_styles/map.css';
@@ -84,7 +85,7 @@ const handleShow = () => setShow(true);
                                         </Modal>
                                         <p className="text-primary">Date demande: {detailDevis.detailDevis[0].dateCreation}</p>
                                         <p className="text-primary">Montant: {detailDevis.detailDevis[0].montant} Ariary</p>
-                                        <div className="d-flex justify-content-center"><button className="btn btn-outline-danger">Retour</button></div>
+                                        <div className="d-flex justify-content-center"><Link to="/artisan/listeDevis"><button className="btn btn-outline-danger">Retour</button></Link></div>
                                     </div>
                                 ) : (
                                     <div className="d-flex justify-content-center">
