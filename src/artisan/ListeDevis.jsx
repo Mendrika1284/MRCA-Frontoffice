@@ -44,7 +44,7 @@ const ListeDevis = () => {
                                 <td>{item.dateCreation}</td>
                                 <td>{item.emailClient}</td>
                                 <td>En attente validation</td>
-                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`}>Télécharger</Link></td>
+                                <td><Link to={`/artisan/telechargerDevis/${item.idDevis}`}>Télécharger</Link></td>
                             </tr>
                         )
                     }else if(item.etatDevis === 3){

@@ -2,6 +2,7 @@ import {Routes, Route} from "react-router-dom";
 import Artisan from "../artisan/Artisan";
 import Dashboard from "../artisan/Dashboard";
 import DetailsDevis from "../artisan/DetailsDevis";
+import DownloadPDF from "../artisan/DownloadPDF";
 import ListeDevis from "../artisan/ListeDevis";
 import MonCompte from "../artisan/MonCompte";
 import PDF from "../artisan/PDF";
@@ -18,6 +19,7 @@ const ArtisanRoute = () => {
           <Route path="moncompte" element={< MonCompte/>} />
           <Route path="detailsDevis/:id" element={<DetailsDevis/>}/>
           <Route path="preparerDevis/:id" element={<PreparerDevis/>}/>
+          <Route path="telechargerDevis/:id" element={<DownloadPDF/>}/>
           <Route path="pdf/:id" element={<PDF/>}/>
           <Route path="*" element={< NotFound />} />
         </Route>
