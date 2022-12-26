@@ -40,17 +40,18 @@ const ListeDevis = () => {
                         return(
                             <tr key={item.idDevis}>
                                 <td>{item.idDevis}</td>
-                                <td><Link to={`/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
+                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
                                 <td>{item.dateCreation}</td>
                                 <td>{item.emailClient}</td>
                                 <td>En attente validation</td>
+                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`}>Télécharger</Link></td>
                             </tr>
                         )
                     }else if(item.etatDevis === 3){
                         return(
                             <tr key={item.idDevis}>
                                 <td>{item.idDevis}</td>
-                                <td><Link to={`/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
+                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
                                 <td>{item.dateCreation}</td>
                                 <td>{item.emailClient}</td>
                                 <td>Validé</td>
@@ -60,7 +61,7 @@ const ListeDevis = () => {
                         return(
                             <tr key={item.idDevis}>
                                 <td>{item.idDevis}</td>
-                                <td><Link to={`/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
+                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
                                 <td>{item.dateCreation}</td>
                                 <td>{item.emailClient}</td>
                                 <td>Refusé</td>
