@@ -7,6 +7,7 @@ export class StepFinal extends Component {
   render() {
     const { values: { 
       typeTravaux,
+      choixTypeTravaux,
       latitude,
       longitude,
       adresse,
@@ -34,6 +35,7 @@ export class StepFinal extends Component {
       let toStringDocument = String(document);
       let toStringInfoSupplementaire = String(infoSupp);
       let toStringEmail = String(email);
+      let toStringChoixTypeTravaux = String(choixTypeTravaux);
 
       const devis = { 
         "idTypeTravaux": toStringIdTypeTravaux,
@@ -47,7 +49,8 @@ export class StepFinal extends Component {
         "infoSupplementaire": toStringInfoSupplementaire,
         "email": toStringEmail,
         "createdAt": dateToday,
-        "etat": 0
+        "etat": 0,
+        "choixTypeTravaux": toStringChoixTypeTravaux
       };
 
       axios.post(`http://localhost:8000/apiplatform/devis_clients`, devis)

@@ -78,6 +78,8 @@ const handleChangeCodePostal = event => {
   }
 };
 
+console.log(values.typeTravaux)
+
 
 // after form submit validating the form data using validator
  const submitFormData = (e) => {

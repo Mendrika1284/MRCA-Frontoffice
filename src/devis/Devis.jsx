@@ -13,6 +13,7 @@ export class Devis extends Component {
   state = {
     step: 1,
     typeTravaux:"",
+    choixTypeTravaux:"",
     latitude: "",
     longitude: "",
     adresse: "",
@@ -47,8 +48,8 @@ handleChange = input => e => {
 
 render() {
   const { step } = this.state;
-  const {typeTravaux,latitude,longitude,adresse,dateDebut,dateFin,document,infoSupp,email } = this.state;
-  const values = {typeTravaux,latitude,longitude,adresse,dateDebut,dateFin,document,infoSupp,email }
+  const {typeTravaux,choixTypeTravaux,latitude,longitude,adresse,dateDebut,dateFin,document,infoSupp,email } = this.state;
+  const values = {typeTravaux,choixTypeTravaux,latitude,longitude,adresse,dateDebut,dateFin,document,infoSupp,email }
 
 
   switch (step) {
