@@ -32,6 +32,20 @@ const ListeDevis = () => {
       return window.location.reload();
     }
 
+    function supprimerDevis(id) {
+      axios.delete(`http://localhost:8000/supprimerDevis/${id}`, null)
+        .then((response) => {
+          if (response.status === 204) {
+            // The item was deleted successfully
+            // Update the component's state to remove the deleted item
+            setListeDevisClient(listeDevisClient.filter((item) => item.idDevis !== id));
+          }
+        })
+        .catch((error) => {
+          // There was an error deleting the item
+        });
+    }
+
     function ListeDevisFetched(){
         if(listeDevisClient?.length > 0){
           return (
@@ -85,7 +99,7 @@ const ListeDevis = () => {
                       </>
                     ): item.etatDevis === 4 || item.etatDevis === 1 || item.etatDevis === 0 ? (
                       <>
-                        <td><Link style={{ textDecoration: 'none' }} className="text-info" to={`/client/demanderIntervention/${item.idDevis}`}>Supprimer</Link></td>
+                        <td><p onClick={() => supprimerDevis(`${item.idDevis}`)}>Supprimer</p></td>
                       </>
                     ): null}
                   </tr>
