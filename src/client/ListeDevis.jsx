@@ -22,7 +22,15 @@ const ListeDevis = () => {
         .catch(error => console.error(`Erreur: ${error}`));
     }
 
-    console.log(listeDevisClient);
+    function validerDevis(id) {
+      axios.patch(`http://localhost:8000/validerDevis/${id}`, null);
+      return window.location.reload();
+    }
+
+    function refuserDevis(id) {
+      axios.patch(`http://localhost:8000/refuserDevis/${id}`, null);
+      return window.location.reload();
+    }
 
     function ListeDevisFetched(){
         if(listeDevisClient?.length > 0){
@@ -32,41 +40,54 @@ const ListeDevis = () => {
                   <tr key={item.idDevis}>
                     <td>{item.idDevis}</td>
                     <td>
-                      {item.etatDevis === 1 || item.etatDevis === 0 ? (
+                      {
+                      item.etatDevis === 1 || item.etatDevis === 0 ? (
                         <p>{item.nomTypeTravaux}</p>
                       ) : (
                         <Link style={{ textDecoration: 'none' }} to={`/client/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link>
-                      )}
+                      )
+                      }
                     </td>
                     <td>{item.dateCreation}</td>
                     <td>
                       {
                       item.etatDevis === 0 ? (
-                        "En attente responsable"
+                        <p className="text-warning">En attente responsable</p>
                       ) :item.etatDevis === 1 ? (
-                        "En attente de preparation"
+                        <p className="text-warning">En attente de preparation</p>
                       ) : item.etatDevis === 2 ? (
-                        "En attente de votre validation"
+                        <p className="text-warning">En attente de votre validation</p>
                       ) : item.etatDevis === 3 ? (
-                        "Validé"
+                        <p className="text-success">Validé</p>
                       ) : item.etatDevis === 4 ? (
-                        "Refusé"
-                      ) : null}
+                        <p className="text-danger">Refusé</p>
+                      ) : null
+                      }
                     </td>
-                    {item.etatDevis === 2 ? (
+                    {
+                    item.etatDevis === 2 ? (
                         <><td>
                             <div className="btn-group dropend">
                             <button type="button" className="btn btn-info btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Action
                             </button>
                             <ul className="dropdown-menu">
-                                <li><Link style={{ textDecoration: 'none' }} to={`/client/validerDevis/${item.idDevis}`}>Valider</Link></li>
+                                <li><p onClick={() => validerDevis(`${item.idDevis}`)}>Valider</p></li>
+                                <li><p onClick={() => refuserDevis(`${item.idDevis}`)}>Refuser</p></li>
                                 <li><Link style={{ textDecoration: 'none' }} to={`/client/telechargerDevis/${item.idDevis}`}>Télécharger</Link></li>
                             </ul>
                             </div>
                           </td>
                         </>
-                    ) : null}
+                    ) : item.etatDevis === 3 ? (
+                      <>
+                        <td><Link style={{ textDecoration: 'none' }} className="text-info" to={`/client/demanderIntervention/${item.idDevis}`}>Demander Intervention</Link></td>
+                      </>
+                    ): item.etatDevis === 4 || item.etatDevis === 1 || item.etatDevis === 0 ? (
+                      <>
+                        <td><Link style={{ textDecoration: 'none' }} className="text-info" to={`/client/demanderIntervention/${item.idDevis}`}>Supprimer</Link></td>
+                      </>
+                    ): null}
                   </tr>
                 )
             }
