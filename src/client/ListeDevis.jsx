@@ -99,7 +99,7 @@ const ListeDevis = () => {
                       </>
                     ): item.etatDevis === 4 || item.etatDevis === 1 || item.etatDevis === 0 ? (
                       <>
-                        <td><p onClick={() => supprimerDevis(`${item.idDevis}`)}>Supprimer</p></td>
+                        <td><p className="text-danger" onClick={() => supprimerDevis(`${item.idDevis}`)}>Supprimer</p></td>
                       </>
                     ): null}
                   </tr>
@@ -111,7 +111,7 @@ const ListeDevis = () => {
 
 
     return ( 
-        <div className='content container d-flex justify-content-center'>
+        <div className='content'>
         <div className="Dashboard section-title"  data-aos="fade-up">
           <h2>Liste de mes devis</h2>
           <table className="table table-bordered">
