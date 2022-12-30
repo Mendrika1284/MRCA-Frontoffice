@@ -4,6 +4,7 @@ import NotFound from "../components/NotFound";
 import MonCompte from "../client/MonCompte";
 import Dashboard from "../client/Dashboard";
 import ListeDevis from "../client/ListeDevis";
+import DetailsDevis from "../client/DetailsDevis";
 
 const ClientRoute = () => {
     return ( 
@@ -13,6 +14,7 @@ const ClientRoute = () => {
           <Route path="dashboard" element={< Dashboard/>} />
           <Route path="moncompte" element={< MonCompte/>} />
           <Route path="listedevis" element={< ListeDevis/>} />
+          <Route path="detailsDevis/:id" element={< DetailsDevis/>} />
           <Route path="*" element={< NotFound />} />
         </Route>
     </Routes>

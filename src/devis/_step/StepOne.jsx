@@ -27,8 +27,9 @@ const StepOne = ({ nextStep, handleChange, values }) => {
     }
 //<option key={fruit.id} value={fruit.id}>{fruit.nom}</option>
 function getIdTypeTravaux(id) {
-  return function() {
-    setSelected(id)
+  return function(e) {
+    e.preventDefault();
+    setSelected(id);
   }
 }
 
