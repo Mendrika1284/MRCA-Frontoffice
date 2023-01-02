@@ -67,6 +67,16 @@ const ListeDevis = () => {
                                 <td>Refusé</td>
                             </tr>
                         )
+                    }else if(item.etatDevis === 5){
+                        return(
+                            <tr key={item.idDevis}>
+                                <td>{item.idDevis}</td>
+                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
+                                <td>{item.dateCreation}</td>
+                                <td>{item.emailClient}</td>
+                                <td>En attente intervention</td>
+                            </tr>
+                        )
                     }
                     return null;
                     }
