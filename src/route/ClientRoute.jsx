@@ -5,6 +5,7 @@ import MonCompte from "../client/MonCompte";
 import Dashboard from "../client/Dashboard";
 import ListeDevis from "../client/ListeDevis";
 import DetailsDevis from "../client/DetailsDevis";
+import DemandeIntervention from "../client/DemandeIntervention";
 
 const ClientRoute = () => {
     return ( 
@@ -15,6 +16,7 @@ const ClientRoute = () => {
           <Route path="moncompte" element={< MonCompte/>} />
           <Route path="listedevis" element={< ListeDevis/>} />
           <Route path="detailsDevis/:id" element={< DetailsDevis/>} />
+          <Route path="demanderIntervention/:id" element={< DemandeIntervention/>} />
           <Route path="*" element={< NotFound />} />
         </Route>
     </Routes>

@@ -75,6 +75,8 @@ const ListeDevis = () => {
                         <p className="text-success">Validé</p>
                       ) : item.etatDevis === 4 ? (
                         <p className="text-danger">Refusé</p>
+                      ) : item.etatDevis === 5 ? (
+                        <p className="text-info">En attente validation pour intervention</p>
                       ) : null
                       }
                     </td>
