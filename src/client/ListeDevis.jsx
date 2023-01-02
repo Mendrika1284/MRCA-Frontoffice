@@ -58,8 +58,8 @@ const ListeDevis = () => {
             listeDevisClient.map((item) => {
                 return(
                   <tr key={item.idDevis}>
-                    <td>{item.idDevis}</td>
-                    <td>
+                    <td className="text-center">{item.idDevis}</td>
+                    <td className="text-center">
                       {
                       item.etatDevis === 1 || item.etatDevis === 0 ? (
                         <p>{item.nomTypeTravaux}</p>
@@ -68,8 +68,8 @@ const ListeDevis = () => {
                       )
                       }
                     </td>
-                    <td>{new Date(item.dateCreation).toLocaleDateString("fr-FR", options)}</td>
-                    <td>
+                    <td className="text-center">{new Date(item.dateCreation).toLocaleDateString("fr-FR", options)}</td>
+                    <td className="text-center">
                       {
                       item.etatDevis === 0 ? (
                         <p className="text-warning">En attente responsable</p>
@@ -88,7 +88,7 @@ const ListeDevis = () => {
                     </td>
                     {
                     item.etatDevis === 2 ? (
-                        <><td>
+                        <><td className="text-center">
                             <div className="btn-group dropend">
                             <button type="button" className="btn btn-info btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Action
