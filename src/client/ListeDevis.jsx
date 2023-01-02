@@ -50,6 +50,8 @@ const ListeDevis = () => {
         if(listeDevisClient?.length > 0){
           return (
             listeDevisClient.map((item) => {
+                const date = new Date(Date.parse(item.dateCreation));
+                const formattedDate = date.toLocaleDateString();
                 return(
                   <tr key={item.idDevis}>
                     <td>{item.idDevis}</td>
@@ -62,7 +64,7 @@ const ListeDevis = () => {
                       )
                       }
                     </td>
-                    <td>{item.dateCreation}</td>
+                    <td>{formattedDate}</td>
                     <td>
                       {
                       item.etatDevis === 0 ? (
