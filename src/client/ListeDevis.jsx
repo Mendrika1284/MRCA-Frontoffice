@@ -46,12 +46,16 @@ const ListeDevis = () => {
         });
     }
 
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+
     function ListeDevisFetched(){
         if(listeDevisClient?.length > 0){
           return (
             listeDevisClient.map((item) => {
-                const date = new Date(Date.parse(item.dateCreation));
-                const formattedDate = date.toLocaleDateString();
                 return(
                   <tr key={item.idDevis}>
                     <td>{item.idDevis}</td>
@@ -64,7 +68,7 @@ const ListeDevis = () => {
                       )
                       }
                     </td>
-                    <td>{formattedDate}</td>
+                    <td>{new Date(item.dateCreation).toLocaleDateString("fr-FR", options)}</td>
                     <td>
                       {
                       item.etatDevis === 0 ? (
