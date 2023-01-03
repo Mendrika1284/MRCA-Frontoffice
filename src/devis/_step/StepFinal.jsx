@@ -50,7 +50,8 @@ export class StepFinal extends Component {
         "email": toStringEmail,
         "createdAt": dateToday,
         "etat": 0,
-        "choixTypeTravaux": toStringChoixTypeTravaux
+        "choixTypeTravaux": toStringChoixTypeTravaux,
+        "montant": String("0.00")
       };
 
       axios.post(`http://localhost:8000/apiplatform/devis_clients`, devis)
