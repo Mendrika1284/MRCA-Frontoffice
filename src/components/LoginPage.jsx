@@ -50,6 +50,7 @@ const LoginPage = () => {
           loginService.saveToken(res.data.token);
           loginService.saveEmail(e.target.email.value);
           loginService.saveId(res.data.connexionClient[0].id);
+          loginService.saveIdArtisan(res.data.artisan[0].id);
           loginService.saveData(res.data);
           setTimeout(() => {
             setIsLoading(false);
