@@ -140,7 +140,7 @@ const optionsDate = {
   return (
         <div className='content'>
             <div className="Dashboard section-title"  data-aos="fade-up">
-                <h2 style={{marginBottom: '200px'}}>Mon Agenda</h2>
+                <h2 style={{marginBottom: '200px'}}>Planification intervention</h2>
                 {
                     isRenovation === false && isMaintenance === false ? 
                     (

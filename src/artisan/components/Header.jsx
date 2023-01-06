@@ -33,7 +33,7 @@ export default function Header() {
                     <ul>
                         <li><Link to="/artisan/dashboard" className="nav-link scrollto"><i className="bx bx-home"></i> <span>Accueil</span></Link></li>
                         <li><Link to="/artisan/moncompte" className="nav-link scrollto"><i className="bx bx-user"></i> <span>Mon Compte</span></Link></li>
-                        <li><Link to="/artisan/agenda" className="nav-link scrollto"><i className="bx bx-calendar-event"></i> <span>Mon Agenda</span></Link></li>
+                        <li><Link to="/artisan/planification" className="nav-link scrollto"><i className="bx bx-calendar-event"></i> <span>Planifier Intervention</span></Link></li>
                         <li><Link to="/artisan/listedevis" className="nav-link scrollto"><i className="bx bx-sort-up"></i> <span>Liste de mes devis</span></Link></li>
                         <li><a href="#" onClick={logout} className="nav-link scrollto"> {
                             isLoading ? (<span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>) : (<i className="bx bx-lock-open-alt"></i> )
