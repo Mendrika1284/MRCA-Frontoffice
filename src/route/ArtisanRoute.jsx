@@ -1,4 +1,5 @@
 import {Routes, Route} from "react-router-dom";
+import Agenda from "../artisan/Agenda";
 import Artisan from "../artisan/Artisan";
 import Dashboard from "../artisan/Dashboard";
 import DetailsDevis from "../artisan/DetailsDevis";
@@ -17,6 +18,7 @@ const ArtisanRoute = () => {
           <Route path="dashboard" element={< Dashboard/>} />
           <Route path="listedevis" element={< ListeDevis/>} />
           <Route path="moncompte" element={< MonCompte/>} />
+          <Route path="agenda" element={< Agenda/>} />
           <Route path="detailsDevis/:id" element={<DetailsDevis/>}/>
           <Route path="preparerDevis/:id" element={<PreparerDevis/>}/>
           <Route path="telechargerDevis/:id" element={<DownloadPDF/>}/>
