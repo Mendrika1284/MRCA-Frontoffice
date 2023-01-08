@@ -193,8 +193,8 @@ const optionsDate = {
                                     {renovationData ?(
                                     renovationData.listeInterventionRenovation.map((item, index) => (
                                         <tr key={index}>
-                                            <td id={item.idDevis} onClick={(e) => handleClickCalendar(e)} data-bs-toggle="modal" data-bs-target="#exampleModal">{item.nomTypeTravaux}</td>
                                             <td id={item.idDevis} onClick={(e) => handleClickCalendar(e)} data-bs-toggle="modal" data-bs-target="#exampleModal">{item.idDevis}</td>
+                                            <td id={item.idDevis} onClick={(e) => handleClickCalendar(e)} data-bs-toggle="modal" data-bs-target="#exampleModal">{item.nomTypeTravaux}</td>
                                             <td id={item.idDevis} onClick={(e) => handleClickCalendar(e)} data-bs-toggle="modal" data-bs-target="#exampleModal">{new Date(item.dateCreation).toLocaleDateString("fr-FR", optionsDate)}</td>
                                             <td id={item.idDevis} onClick={(e) => handleClickCalendar(e)} data-bs-toggle="modal" data-bs-target="#exampleModal">{item.etatIntervention}</td>
                                             <td id={item.idDevis} onClick={(e) => VoirMonTemps(e)} data-bs-toggle="modal" data-bs-target="#exampleModal2">Voir mon temps</td>
