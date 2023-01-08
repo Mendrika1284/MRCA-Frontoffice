@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "./_styles/agenda.css"
+import "./_styles/planification.css"
 import 'react-responsive-datepicker/dist/index.css'
 
 const Agenda = () => {
