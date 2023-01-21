@@ -9,6 +9,7 @@ import MonCompte from "../artisan/MonCompte";
 import PDF from "../artisan/PDF";
 import PreparerDevis from "../artisan/PreparerDevis";
 import NotFound from "../components/NotFound";
+import Agenda from "../artisan/Agenda";
 
 const ArtisanRoute = () => {
     return ( 
@@ -19,6 +20,7 @@ const ArtisanRoute = () => {
           <Route path="listedevis" element={< ListeDevis/>} />
           <Route path="moncompte" element={< MonCompte/>} />
           <Route path="planification" element={< Planification/>} />
+          <Route path="agenda" element={< Agenda/>} />
           <Route path="detailsDevis/:id" element={<DetailsDevis/>}/>
           <Route path="preparerDevis/:id" element={<PreparerDevis/>}/>
           <Route path="telechargerDevis/:id" element={<DownloadPDF/>}/>
