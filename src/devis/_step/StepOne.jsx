@@ -29,8 +29,16 @@ const StepOne = ({ nextStep, handleChange, values }) => {
 function getIdTypeTravaux(id) {
   return function(e) {
     e.preventDefault();
-    setSelected(id);
   }
+}
+
+const [activeIndex, setActiveIndex] = useState(0);
+
+const handleClick = (id, index) => {
+  // call your function to get the id of the typeTravaux
+  
+  setSelected(id);
+  setActiveIndex(index);
 }
 
 
@@ -42,16 +50,16 @@ const MemoizedCarousel = React.memo(Carousel);
 function GetTypeTravaux(){
   if(typeTravaux?.length > 0){
     return (
-      <MemoizedCarousel controls>
-        {typeTravauxChunks.map((chunk) =>
-          <CarouselItem key={chunk.id}>
+      <MemoizedCarousel activeIndex={activeIndex} onSelect={(index) => setActiveIndex(index)} controls>
+        {typeTravauxChunks.map((chunk, index) =>
+          <CarouselItem className="carousel-item" key={chunk.id}>
             <div className="row row-cols-3 g-4">
               {chunk.map((typeTravaux) =>
                 <div className="col">
-                  <div key={typeTravaux.id} onClick={getIdTypeTravaux(typeTravaux.id)}  className="card hovering" style={{width: '130px', margin: '8px', height: '220px'}}>
+                  <div key={typeTravaux.id} onClick={() => handleClick(typeTravaux.id, index)}  className="card hovering" style={{width: '130px', margin: '8px', height: '220px'}}>
                     <img src="assets/img/portfolio/portfolio-1.jpg" className="card-img-top" alt="..." />
                     <div className="card-body">
-                      <h6 className="card-title">{typeTravaux.nom}</h6>
+                      <h6 className="card-title text-center">{typeTravaux.nom}</h6>
                     </div>
                   </div>
                 </div>
