@@ -26,11 +26,7 @@ const StepOne = ({ nextStep, handleChange, values }) => {
         .catch(error => console.error(`Erreur: ${error}`));
     }
 //<option key={fruit.id} value={fruit.id}>{fruit.nom}</option>
-function getIdTypeTravaux(id) {
-  return function(e) {
-    e.preventDefault();
-  }
-}
+
 
 const [activeIndex, setActiveIndex] = useState(0);
 
