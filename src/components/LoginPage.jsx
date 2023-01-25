@@ -44,7 +44,6 @@ const LoginPage = () => {
     setIsLoading(true);
     axios.post('http://localhost:8000/connexion_utilisateur/'+credentials.email+'/'+credentials.password)
     .then(res => {
-      console.log(res.data.connexionClient[0].roles)
       if(typeof res.data.connexionClient !== 'undefined'){
         if(res.data.connexionClient[0].roles.includes("ROLE_PROFESSIONNAL") && res.data.connexionClient[0].status_compte === 1){
           loginService.saveToken(res.data.token);
