@@ -100,7 +100,7 @@ const LoginPage = () => {
 
               </div><br />
               <div className="form-group last mb-4">
-                <input type="password" className="form-control" placeholder="Password" id="password" name="password" value={credentials.password} onChange={onChange} required/>
+                <input type="password" className="form-control" placeholder="Mot de passe" id="password" name="password" value={credentials.password} onChange={onChange} required/>
                 
               </div>
               
