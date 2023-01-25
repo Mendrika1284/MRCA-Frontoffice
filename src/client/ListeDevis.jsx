@@ -184,7 +184,6 @@ const ListeDevis = () => {
 
       const titre = useRef();
       const description = useRef();
-      let idClient = useRef();
 
       const prendreRDV = (event) => {
         event.preventDefault();
@@ -196,11 +195,6 @@ const ListeDevis = () => {
         const descriptionRDV = description.current.value;
         const etatRDV = 0;
 
-        axios.get("http://localhost:8000/detailUtilisateur/"+email).then((response) => {
-            const id = response.data.detailUtilisateur[0].idUtilisateur;
-            idClient = id;
-        })
-        .catch(error => console.error(`Erreur: ${error}`));
 
         axios.post('http://localhost:8000/creerRendezVous', {
             idArtisan: parseInt(devisClient[0].idArtisan),
