@@ -36,52 +36,52 @@ const ListeDevis = () => {
                     if(item.etatDevis === 1){
                         return(
                             <tr key={item.idDevis}>
-                                <td>{item.idDevis}</td>
-                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`} className="nav-link">{item.nomTypeTravaux}</Link></td>
-                                <td>{new Date(item.dateCreation).toLocaleDateString("fr-FR", optionsDate)}</td>
-                                <td>{item.emailClient}</td>
-                                <td><Link to={`/artisan/preparerDevis/${item.idDevis}`} className="nav-link"> A Préparer </Link></td>
+                                <td className="text-center">{item.idDevis}</td>
+                                <td className="text-center"><Link to={`/artisan/detailsDevis/${item.idDevis}`} className="nav-link">{item.nomTypeTravaux}</Link></td>
+                                <td className="text-center">{new Date(item.dateCreation).toLocaleDateString("fr-FR", optionsDate)}</td>
+                                <td className="text-center">{item.emailClient}</td>
+                                <td className="text-center text-info"><Link to={`/artisan/preparerDevis/${item.idDevis}`} style={{textDecoration: "none"}} className="nav-link"> A Préparer </Link></td>
                             </tr>
                         )
                     }else if(item.etatDevis === 2){
                         return(
                             <tr key={item.idDevis}>
-                                <td>{item.idDevis}</td>
-                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
-                                <td>{new Date(item.dateCreation).toLocaleDateString("fr-FR", optionsDate)}</td>
-                                <td>{item.emailClient}</td>
-                                <td>En attente validation</td>
-                                <td><Link to={`/artisan/telechargerDevis/${item.idDevis}`}>Télécharger</Link></td>
+                                <td className="text-center">{item.idDevis}</td>
+                                <td className="text-center"><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
+                                <td className="text-center">{new Date(item.dateCreation).toLocaleDateString("fr-FR", optionsDate)}</td>
+                                <td className="text-center">{item.emailClient}</td>
+                                <td className="text-center">En attente validation</td>
+                                <td className="text-center"><Link to={`/artisan/telechargerDevis/${item.idDevis}`}>Télécharger</Link></td>
                             </tr>
                         )
                     }else if(item.etatDevis === 3){
                         return(
                             <tr key={item.idDevis}>
-                                <td>{item.idDevis}</td>
-                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
-                                <td>{new Date(item.dateCreation).toLocaleDateString("fr-FR", optionsDate)}</td>
-                                <td>{item.emailClient}</td>
-                                <td>Validé</td>
+                                <td className="text-center">{item.idDevis}</td>
+                                <td className="text-center"><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
+                                <td className="text-center">{new Date(item.dateCreation).toLocaleDateString("fr-FR", optionsDate)}</td>
+                                <td className="text-center">{item.emailClient}</td>
+                                <td className="text-center">Validé</td>
                             </tr>
                         )
                     }else if(item.etatDevis === 4){
                         return(
                             <tr key={item.idDevis}>
-                                <td>{item.idDevis}</td>
-                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
-                                <td>{new Date(item.dateCreation).toLocaleDateString("fr-FR", optionsDate)}</td>
-                                <td>{item.emailClient}</td>
-                                <td>Refusé</td>
+                                <td className="text-center">{item.idDevis}</td>
+                                <td className="text-center"><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
+                                <td className="text-center">{new Date(item.dateCreation).toLocaleDateString("fr-FR", optionsDate)}</td>
+                                <td className="text-center">{item.emailClient}</td>
+                                <td className="text-center">Refusé</td>
                             </tr>
                         )
                     }else if(item.etatDevis === 5){
                         return(
                             <tr key={item.idDevis}>
-                                <td>{item.idDevis}</td>
-                                <td><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
-                                <td>{new Date(item.dateCreation).toLocaleDateString("fr-FR", optionsDate)}</td>
-                                <td>{item.emailClient}</td>
-                                <td>En attente intervention</td>
+                                <td className="text-center">{item.idDevis}</td>
+                                <td className="text-center"><Link to={`/artisan/detailsDevis/${item.idDevis}`}>{item.nomTypeTravaux}</Link></td>
+                                <td className="text-center">{new Date(item.dateCreation).toLocaleDateString("fr-FR", optionsDate)}</td>
+                                <td className="text-center">{item.emailClient}</td>
+                                <td className="text-center">En attente intervention</td>
                                 <td email={item.emailClient} id={item.idDevis} onClick={(e) => handleClickRDV(e)} style={{cursor: 'pointer'}} data-bs-toggle="modal" data-bs-target="#exampleModal">Prendre Rendez-vous</td>
                             </tr>
                         )
@@ -153,11 +153,11 @@ const ListeDevis = () => {
           <table className="table table-bordered">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Intitulé</th>
-                <th scope="col">Date demande</th>
-                <th scope="col">Email Client</th>
-                <th scope="col">Etat</th>
+                <th className="text-center" scope="col">#</th>
+                <th className="text-center">Intitulé</th>
+                <th className="text-center">Date demande</th>
+                <th className="text-center">Email Client</th>
+                <th className="text-center">Etat</th>
               </tr>
             </thead>
             <tbody>
