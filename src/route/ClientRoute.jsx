@@ -7,6 +7,7 @@ import ListeDevis from "../client/ListeDevis";
 import DetailsDevis from "../client/DetailsDevis";
 import DemandeIntervention from "../client/DemandeIntervention";
 import HistoriqueIntervention from "../client/HistoriqueIntervention";
+import RendezVous from "../client/RendezVous";
 
 const ClientRoute = () => {
     return ( 
@@ -17,6 +18,7 @@ const ClientRoute = () => {
           <Route path="moncompte" element={< MonCompte/>} />
           <Route path="listedevis" element={< ListeDevis/>} />
           <Route path="detailsDevis/:id" element={< DetailsDevis/>} />
+          <Route path="rendezvous" element={< RendezVous/>} />
           <Route path="demanderIntervention/:id" element={< DemandeIntervention/>} />
           <Route path="historiqueintervention" element={< HistoriqueIntervention/>} />
           <Route path="*" element={< NotFound />} />
