@@ -26,6 +26,7 @@ const Agenda = () => {
       const { data } = await axios.get(`http://localhost:8000/allRendezVousArtisan/${idArtisan}`);
       const rendezVousWithEventType = data.rendez_vous.map(rv => ({ ...rv, eventType: 'rendez_vous' }));
       setEvents2((prev) => [...prev, ...rendezVousWithEventType]);
+      console.log(events2);
   };
   
   useEffect(() => {
@@ -154,6 +155,17 @@ console.log(mergedEvents);
       }
     
 
+      const validerRDV = (id) => {
+        axios.patch(`http://localhost:8000/validerRendezVousByArtisan/${id}`, null)
+          .then(response => {
+            fetchEvenements2();
+            toast.success("Rendez-vous valider avec succes");
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+
       
 
       const calendarDays = renderCalendarDays(currentMonth, currentYear);
@@ -169,6 +181,41 @@ console.log(mergedEvents);
             <td className='text-center'>
               <button className='btn btn-danger' onClick={() => removeEvent(event.id)}>Enlever</button>
             </td>
+          </tr>
+        ));
+      }
+
+      const renderRDVTable = () => {
+        return events2.map((event, index) => (
+          <tr key={index}>
+            <td className='text-center'>{event.titre}</td>
+            <td className='text-center'>{event.date}</td>
+            <td className='text-center'>{event.heureDebut}</td>
+            <td className='text-center'>{event.heureFin}</td>
+            {
+              event.etat === 0 ? 
+              (<>
+                <td className='text-center'>En attente validation client</td>
+              </>) :
+              event.etat === 1 ?
+              (<>  
+                <td className='text-center'>Valider par le client</td>
+              </>) :
+              event.etat === 2 ?
+              (<>
+                <td className='text-center'>Refuser par le client</td>
+              </>) :
+              event.etat === 5 ?
+              (<>
+                <td className='text-center'>En attente de votre validation</td>
+                <td className='text-center'><button className='btn btn-success' onClick={() => validerRDV(event.id)}>Accepter</button></td>
+              </>) :
+              event.etat === 6 ?
+              (<>
+                <td className='text-center'>Valider par vous</td>
+              </>) :
+              (<></>)
+            }
           </tr>
         ));
       }
@@ -228,6 +275,7 @@ console.log(mergedEvents);
                         </div>
                     </div>
                     <div className='col-md-6'>
+                    <h1 className='text-center'>Evenement</h1>
                     <table className="table table-bordered">
                                 <thead>
                                 <tr>
@@ -241,7 +289,22 @@ console.log(mergedEvents);
                                 <tbody>
                                     {renderEventTable()}
                                 </tbody>
-                            </table>
+                      </table>
+                      <h1 className='text-center'>Rendez-vous</h1>
+                      <table className="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th className='text-center'>Titre</th>
+                                    <th className='text-center'>Date</th>
+                                    <th className='text-center'>Début</th>
+                                    <th className='text-center'>Fin</th>
+                                    <th className='text-center'>Etat</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {renderRDVTable()}
+                                </tbody>
+                      </table>
                     </div>
                 </div>
             </div>

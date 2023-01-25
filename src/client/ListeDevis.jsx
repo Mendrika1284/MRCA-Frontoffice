@@ -193,7 +193,7 @@ const ListeDevis = () => {
         const heureFinRDV = heureFinInput.current.value;
         const titreRDV = titre.current.value;
         const descriptionRDV = description.current.value;
-        const etatRDV = 0;
+        const etatRDV = 5;
 
 
         axios.post('http://localhost:8000/creerRendezVous', {
