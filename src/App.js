@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ClientRoute from "./route/ClientRoute";
+import LoginRoute from "./route/LoginRoute";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import AuthGuard from "./_helpers/AuthGuard";
+import DevisRoute from "./route/DevisRoute";
+import ArtisanRoute from "./route/ArtisanRoute";
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/*" element={<LoginRoute/>}/>
+        <Route path="/client/*" element={
+          <AuthGuard>
+            <ClientRoute/>
+          </AuthGuard>
+        }/>
+        <Route path="/artisan/*" element={
+          <AuthGuard>
+            <ArtisanRoute/>
+          </AuthGuard>
+        }/>
+        <Route path="/demande_devis/*" element={<DevisRoute/>} />
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }
